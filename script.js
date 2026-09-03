@@ -27,37 +27,7 @@ gsap.ticker.lagSmoothing(0);
 // ==========================================
 // CUSTOM CURSOR & MAGNETIC ELEMENTS
 // ==========================================
-const cursor = document.getElementById('cursor');
-const cursorFollower = document.getElementById('cursor-follower');
-let mouseX = 0, mouseY = 0;
-let cursorX = 0, cursorY = 0;
-let followerX = 0, followerY = 0;
-
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
-
-// Animate Cursor
-gsap.ticker.add(() => {
-    // Fast ease for main dot
-    cursorX += (mouseX - cursorX) * 0.2;
-    cursorY += (mouseY - cursorY) * 0.2;
-    
-    // Slower ease for follower ring
-    followerX += (mouseX - followerX) * 0.08;
-    followerY += (mouseY - followerY) * 0.08;
-    
-    gsap.set(cursor, { x: cursorX, y: cursorY });
-    gsap.set(cursorFollower, { x: followerX, y: followerY });
-});
-
-// Hover States
-const hoverElements = document.querySelectorAll('a, button, .magnetic, .placeholder-img, .placeholder-video');
-hoverElements.forEach(el => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-});
+// Custom Cursor removed for performance.
 
 // Magnetic Buttons Effect
 const magneticElements = document.querySelectorAll('.magnetic');
@@ -208,7 +178,22 @@ heroTl.from('.hero-bg-text', { y: 100, opacity: 0, duration: 1.5, ease: 'power4.
 
 // Mouse Parallax for Hero Elements (slowed down)
 const heroSection = document.getElementById('hero');
-heroSection.addEventListener('mousemove', (e) => {
+
+// Utility: Throttle function to limit event firing rate
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+}
+
+heroSection.addEventListener('mousemove', throttle((e) => {
     const x = (e.clientX / window.innerWidth - 0.5) * 20;
     const y = (e.clientY / window.innerHeight - 0.5) * 20;
     
@@ -217,7 +202,7 @@ heroSection.addEventListener('mousemove', (e) => {
     gsap.to('.card-1', { x: x * 3, y: y * 3, duration: 4, ease: 'power2.out' });
     gsap.to('.card-2', { x: x * -2, y: y * -2, duration: 4, ease: 'power2.out' });
     gsap.to('.card-3', { x: x * 1.5, y: y * 1.5, duration: 4, ease: 'power2.out' });
-});
+}, 50));
 
 // Scroll Parallax Images
 gsap.utils.toArray('.parallax-img').forEach(img => {
@@ -298,7 +283,7 @@ gsap.from('.grid-item', {
 // BUTTERFLIES ANIMATION SYSTEM
 // ==========================================
 const butterflyContainer = document.getElementById('butterflies-container');
-const numButterflies = window.innerWidth < 768 ? 15 : 35;
+const numButterflies = window.innerWidth < 768 ? 8 : 15;
 
 function createButterfly() {
     const butterfly = document.createElement('div');
