@@ -250,127 +250,7 @@ body.hovering .cursor-follower {
     background: rgba(255, 255, 255, 0.3);
 }
 
-/* ==========================================
-   NAVBAR (Premium Floating Glassmorphism)
-========================================== */
-.navbar {
-    position: fixed;
-    top: 25px;
-    left: 0; right: 0;
-    margin: 0 auto;
-    width: 92%;
-    max-width: 1200px;
-    height: 70px;
-    border-radius: 40px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 35px;
-    z-index: 9999;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.navbar.scrolled {
-    height: 60px;
-    background: rgba(255, 253, 251, 0.4);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-}
-.navbar .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-}
-.navbar .nav-links a {
-    text-decoration: none;
-    color: var(--clr-charcoal);
-    font-family: var(--font-sans);
-    font-size: 15px;
-    font-weight: 500;
-    position: relative;
-    padding: 5px;
-    transition: color 0.3s ease;
-}
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px; left: 50%;
-    transform: translateX(-50%) scaleX(0);
-    width: 80%; height: 1.5px;
-    background: var(--clr-blush-pink);
-    border-radius: 2px;
-    transition: transform 0.3s ease;
-}
-.navbar .nav-links a:hover {
-    color: var(--clr-rose-pink);
-}
-.navbar .nav-links a:hover::after,
-.navbar .nav-links a.active::after {
-    transform: translateX(-50%) scaleX(1);
-}
-.nav-right {
-    position: absolute;
-    right: 30px;
-}
-.nav-btn {
-    background: transparent;
-    border: 1px solid var(--clr-charcoal);
-    padding: 0.4rem 1.2rem;
-    border-radius: 30px;
-    font-family: var(--font-sans);
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--clr-charcoal);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-}
-.nav-btn:hover {
-    background: var(--clr-charcoal);
-    color: var(--clr-warm-white);
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-}
-
-/* Mobile Overlay */
-.mobile-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(255, 253, 251, 0.95);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    z-index: 99;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: translateY(-100%);
-}
-.mobile-links {
-    list-style: none;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-.mobile-links a {
-    font-family: var(--font-secondary);
-    font-size: 3rem;
-    color: var(--clr-charcoal);
-    text-decoration: none;
-}
-.hamburger.active span:nth-child(1) {
-    transform: translateY(2.5px) rotate(45deg);
-}
-.hamburger.active span:nth-child(2) {
-    transform: translateY(-2.5px) rotate(-45deg);
-}
+/* Navbar removed per user request */
 
 /* ==========================================
    HERO SECTION
@@ -382,6 +262,38 @@ body.hovering .cursor-follower {
     justify-content: center;
     position: relative;
     overflow: hidden;
+}
+
+/* Floating Circular Images */
+.floating-bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+.floating-bubbles .bubble {
+    position: absolute;
+    border-radius: 50%;
+    object-fit: cover;
+    opacity: 0.7;
+    animation: float-bubble 15s infinite ease-in-out alternate;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border: 2px solid rgba(255,255,255,0.3);
+}
+/* Adjusted positions to the extreme edges to prevent overlapping with central content */
+.floating-bubbles .b1 { width: 80px; height: 80px; top: 10%; left: 3%; animation-delay: 0s; animation-duration: 12s; }
+.floating-bubbles .b2 { width: 120px; height: 120px; top: 80%; left: 5%; animation-delay: -3s; animation-duration: 16s; }
+.floating-bubbles .b3 { width: 90px; height: 90px; top: 15%; right: 5%; animation-delay: -7s; animation-duration: 14s; }
+.floating-bubbles .b4 { width: 140px; height: 140px; top: 75%; right: 3%; animation-delay: -10s; animation-duration: 18s; }
+
+@keyframes float-bubble {
+    0% { transform: translateY(0) translateX(0) rotate(0deg); }
+    33% { transform: translateY(-30px) translateX(20px) rotate(5deg); }
+    66% { transform: translateY(15px) translateX(-15px) rotate(-5deg); }
+    100% { transform: translateY(-10px) translateX(30px) rotate(3deg); }
 }
 .hero-bg-text {
     position: absolute;
@@ -1045,10 +957,17 @@ body.hovering .cursor-follower {
         max-width: 100vw !important;
     }
     
+    /* Section Padding Adjustments */
     .hero-section, .world-section, .gallery-section, .video-section, .story-section, .final-gallery, .quote-section {
-        padding: 10vh 5vw !important;
-        margin-bottom: 5vh;
+        padding: 5vh 5vw !important;
+        margin-bottom: 2vh;
     }
+    
+    /* Reposition bubbles for mobile to extreme corners & scale down slightly */
+    .floating-bubbles .b1 { width: 50px; height: 50px; top: 5%; left: 2%; }
+    .floating-bubbles .b2 { width: 70px; height: 70px; top: 90%; left: 2%; }
+    .floating-bubbles .b3 { width: 60px; height: 60px; top: 5%; right: 2%; }
+    .floating-bubbles .b4 { width: 80px; height: 80px; top: 85%; right: 2%; }
     
     /* 2. Hero Section */
     .hero-content {
@@ -1129,9 +1048,5 @@ body.hovering .cursor-follower {
     .quote-section h2 { font-size: 2.2rem; }
     .desc, .split-content p { font-size: 1rem; line-height: 1.5; }
     .cta-btn { padding: 0.8rem 2rem; font-size: 0.9rem; }
-    
-    /* 6. Navigation */
-    .navbar, #mobile-overlay {
-        display: none !important;
-    }
+    /* Navigation rules removed */
 }

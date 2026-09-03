@@ -43,71 +43,7 @@ magneticElements.forEach(el => {
     });
 });
 
-// ==========================================
-// NAVBAR SCROLL EFFECT
-// ==========================================
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
-// ==========================================
-// DYNAMIC NAVIGATION & SCROLL SPY
-// ==========================================
-const navLinksContainer = document.getElementById('desktop-links');
-const mobileLinksContainer = document.getElementById('mobile-links-container');
-const sectionsWithNav = document.querySelectorAll('section[data-nav-title]');
-const navLinks = [];
-
-const primarySections = ['hero', 'gallery', 'final-gallery', 'story', 'wishes'];
-
-sectionsWithNav.forEach(sec => {
-    if (!primarySections.includes(sec.id)) return;
-    
-    const title = sec.getAttribute('data-nav-title');
-    const id = sec.id;
-    
-    // Desktop Link
-    const liDesktop = document.createElement('li');
-    liDesktop.className = 'magnetic';
-    const aDesktop = document.createElement('a');
-    aDesktop.href = `#${id}`;
-    aDesktop.textContent = title;
-    liDesktop.appendChild(aDesktop);
-    navLinksContainer.appendChild(liDesktop);
-    navLinks.push({ a: aDesktop, sec: sec });
-    
-    // Mobile Link
-    const liMobile = document.createElement('li');
-    const aMobile = document.createElement('a');
-    aMobile.href = `#${id}`;
-    aMobile.textContent = title;
-    liMobile.appendChild(aMobile);
-    mobileLinksContainer.appendChild(liMobile);
-    
-    aMobile.addEventListener('click', (e) => {
-        e.preventDefault();
-        closeMobileMenu();
-        lenis.scrollTo(sec, { duration: 1.5, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-    });
-    
-    // Bind magnetic effect to desktop link
-    liDesktop.addEventListener('mousemove', (e) => {
-        const rect = liDesktop.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        gsap.to(liDesktop, { x: x * 0.4, y: y * 0.4, duration: 0.5, ease: 'power2.out' });
-    });
-    liDesktop.addEventListener('mouseleave', () => {
-        gsap.to(liDesktop, { x: 0, y: 0, duration: 0.5, ease: 'power2.out' });
-    });
-    liDesktop.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-    liDesktop.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-});
+// Navbar completely removed per user request.
 
 // Celebrate Button
 const celebrateBtn = document.getElementById('celebrate-btn');
@@ -117,54 +53,6 @@ if (celebrateBtn) {
         lenis.scrollTo('#wishes', { duration: 2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
     });
 }
-
-// Mobile Menu Toggle
-const mobileToggle = document.getElementById('mobile-toggle');
-const mobileOverlay = document.getElementById('mobile-overlay');
-let menuOpen = false;
-
-function closeMobileMenu() {
-    menuOpen = false;
-    mobileToggle.classList.remove('active');
-    gsap.to(mobileOverlay, { y: '-100%', duration: 0.8, ease: 'power4.inOut' });
-}
-
-mobileToggle.addEventListener('click', () => {
-    menuOpen = !menuOpen;
-    mobileToggle.classList.toggle('active');
-    if (menuOpen) {
-        gsap.to(mobileOverlay, { y: '0%', duration: 0.8, ease: 'power4.inOut' });
-        gsap.fromTo('#mobile-links-container li', 
-            { y: 50, opacity: 0 }, 
-            { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'power2.out', delay: 0.3 }
-        );
-    } else {
-        closeMobileMenu();
-    }
-});
-
-// Smooth Scroll for Desktop Nav Links
-navLinks.forEach(linkObj => {
-    linkObj.a.addEventListener('click', (e) => {
-        e.preventDefault();
-        lenis.scrollTo(linkObj.sec, { duration: 1.5, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-    });
-});
-
-// Scroll Spy active state
-navLinks.forEach((linkObj) => {
-    ScrollTrigger.create({
-        trigger: linkObj.sec,
-        start: "top 50%",
-        end: "bottom 50%",
-        onToggle: (self) => {
-            if (self.isActive) {
-                navLinks.forEach(l => l.a.classList.remove('active'));
-                linkObj.a.classList.add('active');
-            }
-        }
-    });
-});
 
 // ==========================================
 // ANIMATIONS
