@@ -233,8 +233,7 @@ body.hovering .cursor-follower {
     width: 60px;
     height: 60px;
     background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    /* Removed blur for performance */
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 50%;
     display: flex;
@@ -323,9 +322,8 @@ body.hovering .cursor-follower {
 
 /* Glassmorphism Cards */
 .glassmorphism {
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.75);
+    /* Removed blur for performance */
     border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 20px;
     padding: 1.5rem;
@@ -428,8 +426,8 @@ body.hovering .cursor-follower {
 .play-btn {
     width: 80px;
     height: 80px;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.3);
+    /* Removed blur for performance */
     border: 1px solid rgba(255,255,255,0.3);
     border-radius: 50%;
     display: flex;
@@ -656,7 +654,7 @@ body.hovering .cursor-follower {
 .bokeh {
     position: fixed;
     border-radius: 50%;
-    filter: blur(80px);
+    /* Removed blur for performance */
     opacity: 0.4;
     pointer-events: none;
     z-index: -1;
@@ -823,7 +821,7 @@ body.hovering .cursor-follower {
         radial-gradient(circle at 15% 25%, rgba(246, 182, 201, 0.15) 0%, transparent 40%),
         radial-gradient(circle at 85% 75%, rgba(216, 196, 244, 0.15) 0%, transparent 40%),
         radial-gradient(circle at 50% 50%, rgba(255, 229, 212, 0.1) 0%, transparent 50%);
-    filter: blur(40px);
+    /* Removed blur for performance */
 }
 
 /* ==========================================
@@ -881,9 +879,8 @@ body.hovering .cursor-follower {
     perspective: 1000px;
 }
 .letter-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.15);
+    /* Removed blur for performance */
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 16px;
     padding: 5rem 4rem;
