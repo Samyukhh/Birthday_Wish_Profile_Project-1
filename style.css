@@ -202,10 +202,9 @@ body.hovering .cursor-follower {
 ========================================== */
 .placeholder-img, .placeholder-video {
     background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
     border: 2px solid rgba(255, 255, 255, 0.7);
     border-radius: 25px !important;
+    will-change: transform;
     box-shadow: 0 15px 35px rgba(246, 182, 201, 0.35), 0 0 15px rgba(255, 255, 255, 0.5); /* Pink shadow + glow */
     position: relative;
     overflow: hidden;
@@ -423,6 +422,7 @@ body.hovering .cursor-follower {
     box-shadow: 0 15px 35px rgba(250, 218, 221, 0.3);
     position: absolute;
     transition: transform 0.4s var(--ease-out-expo);
+    will-change: transform;
 }
 .glassmorphism:hover {
     transform: scale(1.05) translateY(-10px) !important;
@@ -584,7 +584,7 @@ body.hovering .cursor-follower {
 }
 .story-card {
     width: 60%;
-    height: 50vh;
+    height: auto; /* Allows group photos to show fully without clipping */
     border-radius: 16px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     will-change: transform;
@@ -623,7 +623,7 @@ body.hovering .cursor-follower {
 }
 .footer-logo {
     font-family: var(--font-secondary);
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 2rem;
 }
 .footer-social {
@@ -774,10 +774,12 @@ body.hovering .cursor-follower {
     border-radius: 50%;
     box-shadow: 0 0 10px 2px rgba(255,255,255,0.8);
     opacity: 0;
+    will-change: transform, opacity;
 }
 .petal {
     position: absolute;
     width: 15px; height: 15px;
+    will-change: transform, opacity;
     background: linear-gradient(135deg, var(--clr-baby-pink), var(--clr-blush-pink));
     border-radius: 50% 0 50% 0;
     opacity: 0;
@@ -1108,6 +1110,7 @@ body.hovering .cursor-follower {
     
     .story-card {
         width: 95% !important;
+        height: auto !important; /* Prevents vertical clipping on mobile */
         margin: 0 auto !important;
         align-self: center !important;
     }
