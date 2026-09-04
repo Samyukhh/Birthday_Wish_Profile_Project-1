@@ -14,6 +14,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader-content">
+            <p id="loading-text" style="font-size: 1.5rem; font-family: var(--font-primary); font-style: italic;">Preparing something special...</p>
+            <div class="progress-container" style="width: 250px; height: 4px; background: rgba(0,0,0,0.1); border-radius: 2px; margin: 1.5rem 0; overflow: hidden;">
+                <div class="progress-bar" id="progress-bar" style="width: 0%; height: 100%; background: var(--clr-gold); transition: width 0.3s ease;"></div>
+            </div>
+            <div class="progress-text" id="progress-text" style="font-size: 1.1rem; letter-spacing: 2px;">0%</div>
+            <div id="start-prompt" style="display: none; position: fixed; inset: 0; align-items: center; justify-content: center; z-index: 100; cursor: pointer;">
+                <p style="font-size: 1.8rem; font-family: var(--font-primary); color: var(--clr-charcoal); background: rgba(255,255,255,0.8); padding: 1rem 2rem; border-radius: 30px; backdrop-filter: blur(5px);">✨<br>Tap<br>anywhere<br>to<br>begin<br>✨</p>
+            </div>
+        </div>
+    </div>
     <!-- Audio Elements -->
     <div class="floral-overlay"></div>
     <div class="bokeh bokeh-1"></div>
@@ -34,17 +48,17 @@
                 
                 <!-- Floating Circular Images for Hero -->
                 <div class="floating-bubbles">
-                    <img src="assets\images\Snapchat-80808535.jpg" class="bubble b1" alt="bubble">
+                    <img src="assets/images/Snapchat-80808535.jpg" class="bubble b1" alt="bubble">
                     <img src="assets/images/IMG_20251001_161321_049.jpg" class="bubble b2" alt="bubble">
-                    <img src="assets\images\Screenshot_20260903_125151_Instagram.jpg" class="bubble b3" alt="bubble">
-                    <img src="assets\images\Screenshot_20251024_012641_Instagram.jpg" class="bubble b4" alt="bubble">
+                    <img src="assets/images/Screenshot_20260903_125151_Instagram.jpg" class="bubble b3" alt="bubble">
+                    <img src="assets/images/Screenshot_20251024_012641_Instagram.jpg" class="bubble b4" alt="bubble">
                 </div>
 
                 <div class="hero-content">
                     <div class="botanical-decor decor-hero-left">🌻🌿</div>
                     <div class="botanical-decor decor-hero-right">🌸</div>
                     
-                    <img src="assets\images\Screenshot_20260903_122335_Instagram.jpg" class="hero-portrait placeholder-img image-reveal" alt="Portrait">
+                    <img src="assets/images/Screenshot_20260903_122335_Instagram.jpg" class="hero-portrait placeholder-img image-reveal" alt="Portrait">
                     <div class="floating-card card-1 glassmorphism">
                         <p style="text-align: center" class="quote">"Happy 21st Birthday<br>Snehomoni !!!"</p>
                     </div>
@@ -68,12 +82,12 @@
                     <p class="desc split-text" style="font-size: 1.2rem;">Ajker puro website-ta tomar cringe korar jonno specially banano hoyeche. 😂</p>
                 </div>
                 <div class="masonry-grid">
-                    <img src="assets\images\Screenshot_20260903_121738_Instagram.jpg" class="masonry-item placeholder-img tilt-card" alt="Gallery">
-                    <img src="assets\images\Screenshot_20260903_155412_Instagram.jpg" class="masonry-item placeholder-img tilt-card" alt="Gallery">
-                    <img src="assets\images\Screenshot_20260903_122508_Instagram.jpg" class="masonry-item placeholder-img tilt-card" alt="Gallery">
-                    <img src="assets\images\Screenshot_20260903_122301_Instagram.jpg" class="masonry-item placeholder-img tilt-card" alt="Gallery">
-                    <img src="assets\images\Screenshot_20260903_155325_Instagram.jpg" class="masonry-item placeholder-img tilt-card" alt="Gallery">
-                    <img src="assets\images\Screenshot_20260903_122639_Instagram.jpg" class="masonry-item placeholder-img tilt-card" alt="Gallery">
+                    <img src="assets/images/Screenshot_20260903_121738_Instagram.jpg" class="masonry-item placeholder-img tilt-card" loading="lazy" alt="Gallery">
+                    <img src="assets/images/Screenshot_20260903_155412_Instagram.jpg" class="masonry-item placeholder-img tilt-card" loading="lazy" alt="Gallery">
+                    <img src="assets/images/Screenshot_20260903_122508_Instagram.jpg" class="masonry-item placeholder-img tilt-card" loading="lazy" alt="Gallery">
+                    <img src="assets/images/Screenshot_20260903_122301_Instagram.jpg" class="masonry-item placeholder-img tilt-card" loading="lazy" alt="Gallery">
+                    <img src="assets/images/Screenshot_20260903_155325_Instagram.jpg" class="masonry-item placeholder-img tilt-card" loading="lazy" alt="Gallery">
+                    <img src="assets/images/Screenshot_20260903_122639_Instagram.jpg" class="masonry-item placeholder-img tilt-card" loading="lazy" alt="Gallery">
                 </div>
             </section>
 
@@ -107,7 +121,7 @@
             <section id="video" class="video-section grad-s4 dark-section" data-nav-title="Video Memories">
                 <div class="split-layout">
                     <div class="split-video glowing-video-border">
-                        <video src="assets\clips\Video Project.mp4" autoplay loop muted playsinline class="placeholder-video" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"></video>
+                        <video src="assets/clips/Video Project.mp4" loop muted playsinline preload="metadata" class="placeholder-video lazy-video" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"></video>
                         <div class="play-btn magnetic">▶</div>
                     </div>
                     <div class="split-content">
@@ -120,7 +134,7 @@
                 <div class="split-layout reverse mt-large" style="position: relative;">
                     <div class="botanical-decor decor-video-edge">🌸🌿</div>
                     <div class="split-video glowing-video-border">
-                        <video src="assets\clips\Video Project 1.mp4" autoplay loop muted playsinline class="placeholder-video" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"></video>
+                        <video src="assets/clips/Video Project 1.mp4" loop muted playsinline preload="metadata" class="placeholder-video lazy-video" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"></video>
                         <div class="play-btn magnetic">▶</div>
                     </div>
                     <div class="split-content">
@@ -141,12 +155,12 @@
                     <p class="desc split-text" style="font-size: 1.2rem;">Chobir Stock ar phorabe na etoh chobi ... Chobir por Chobi !</p>
                 </div>
                 <div class="final-grid">
-                    <img src="assets\images\Screenshot_20260903_122418_Instagram.jpg" class="grid-item placeholder-img reveal-item" alt="Memory">
-                    <img src="assets\images\Screenshot_20260903_122357_Instagram.jpg" class="grid-item placeholder-img reveal-item" alt="Memory">
-                    <img src="assets\images\Screenshot_20260903_122312_Instagram.jpg" class="grid-item placeholder-img reveal-item" alt="Memory">
-                    <img src="assets\images\Screenshot_20260903_122216_Instagram.jpg" class="grid-item placeholder-img reveal-item" alt="Memory">
-                    <img src="assets\images\Screenshot_20260903_121819_Instagram.jpg" class="grid-item placeholder-img reveal-item" alt="Memory">
-                    <img src="assets\images\Screenshot_20260903_122629_Instagram.jpg" class="grid-item placeholder-img reveal-item" alt="Memory">
+                    <img src="assets/images/Screenshot_20260903_122418_Instagram.jpg" class="grid-item placeholder-img reveal-item" loading="lazy" alt="Memory">
+                    <img src="assets/images/Screenshot_20260903_122357_Instagram.jpg" class="grid-item placeholder-img reveal-item" loading="lazy" alt="Memory">
+                    <img src="assets/images/Screenshot_20260903_122312_Instagram.jpg" class="grid-item placeholder-img reveal-item" loading="lazy" alt="Memory">
+                    <img src="assets/images/Screenshot_20260903_122216_Instagram.jpg" class="grid-item placeholder-img reveal-item" loading="lazy" alt="Memory">
+                    <img src="assets/images/Screenshot_20260903_121819_Instagram.jpg" class="grid-item placeholder-img reveal-item" loading="lazy" alt="Memory">
+                    <img src="assets/images/Screenshot_20260903_122629_Instagram.jpg" class="grid-item placeholder-img reveal-item" loading="lazy" alt="Memory">
                 </div>
             </section>
 
@@ -160,10 +174,10 @@
                     <p class="desc split-text" style="font-size: 1.2rem;">Kichu group pics , jate mone rakhis amader ...</p>
                 </div>
                 <div class="story-container">
-                    <img src="assets\images\IMG-20210824-WA0132-1.jpg" class="story-card placeholder-img card-parallax" alt="Story">
-                    <img src="assets\images\IMG-20221005-WA0024.jpg" class="story-card placeholder-img card-parallax" data-speed="0.9" alt="Story">
-                    <img src="assets\images\IMG-20250930-WA0046.jpg" class="story-card placeholder-img card-parallax" data-speed="1.1" alt="Story">
-                    <img src="assets\images\IMG-20260206-WA0005.jpg" class="story-card placeholder-img card-parallax" data-speed="0.85" alt="Story">
+                    <img src="assets/images/IMG-20210824-WA0132-1.jpg" class="story-card placeholder-img card-parallax" loading="lazy" alt="Story">
+                    <img src="assets/images/IMG-20221005-WA0024.jpg" class="story-card placeholder-img card-parallax" data-speed="0.9" loading="lazy" alt="Story">
+                    <img src="assets/images/IMG-20250930-WA0046.jpg" class="story-card placeholder-img card-parallax" data-speed="1.1" loading="lazy" alt="Story">
+                    <img src="assets/images/IMG-20260206-WA0005.jpg" class="story-card placeholder-img card-parallax" data-speed="0.85" loading="lazy" alt="Story">
                 </div>
             </section>
             
@@ -172,10 +186,10 @@
                 
                 <!-- Floating Circular Images for Wishes -->
                 <div class="floating-bubbles">
-                    <img src="assets\images\Screenshot_20251024_012641_Instagram.jpg" class="bubble b1" alt="bubble">
-                    <img src="assets\images\Screenshot_20260903_125151_Instagram.jpg" class="bubble b2" alt="bubble">
+                    <img src="assets/images/Screenshot_20251024_012641_Instagram.jpg" class="bubble b1" alt="bubble">
+                    <img src="assets/images/Screenshot_20260903_125151_Instagram.jpg" class="bubble b2" alt="bubble">
                     <img src="assets/images/IMG_20251001_161321_049.jpg" class="bubble b3" alt="bubble">
-                    <img src="assets\images\Snapchat-80808535.jpg" class="bubble b4" alt="bubble">
+                    <img src="assets/images/Snapchat-80808535.jpg" class="bubble b4" alt="bubble">
                 </div>
 
                 <div class="botanical-decor decor-wishes-left">🌿</div>

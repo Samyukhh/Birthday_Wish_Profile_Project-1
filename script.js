@@ -1,4 +1,93 @@
 // ==========================================
+// LOADING SCREEN & AUDIO AUTOPLAY
+// ==========================================
+document.body.style.overflow = 'hidden'; // Lock scroll during loading
+
+const loader = document.getElementById('loading-screen');
+const progressBar = document.getElementById('progress-bar');
+const progressText = document.getElementById('progress-text');
+const startPrompt = document.getElementById('start-prompt');
+
+let loadedCount = 0;
+const criticalAssets = Array.from(document.querySelectorAll('img:not([loading="lazy"])'));
+const bgMusic = document.getElementById('bg-music');
+let isMusicPlaying = false;
+
+if (bgMusic) criticalAssets.push(bgMusic);
+document.querySelectorAll('video').forEach(v => criticalAssets.push(v));
+
+const totalAssets = criticalAssets.length || 1;
+
+function updateProgress() {
+    loadedCount++;
+    const percent = Math.floor((loadedCount / totalAssets) * 100);
+    if (progressBar) progressBar.style.width = percent + '%';
+    if (progressText) progressText.innerText = percent + '%';
+    
+    if (loadedCount >= totalAssets) {
+        setTimeout(showStartPrompt, 500);
+    }
+}
+
+function showStartPrompt() {
+    if (document.querySelector('.progress-container')) document.querySelector('.progress-container').style.display = 'none';
+    if (progressText) progressText.style.display = 'none';
+    if (document.getElementById('loading-text')) document.getElementById('loading-text').style.display = 'none';
+    
+    if (startPrompt) {
+        startPrompt.style.display = 'flex';
+        startPrompt.addEventListener('click', startExperience, { once: true });
+    } else {
+        startExperience();
+    }
+}
+
+function startExperience() {
+    if (bgMusic) {
+        bgMusic.volume = 0;
+        bgMusic.play().then(() => {
+            gsap.to(bgMusic, { volume: 0.5, duration: 2 });
+            isMusicPlaying = true;
+            if (typeof musicToggle !== 'undefined' && musicToggle) musicToggle.textContent = '🔊';
+        }).catch(e => console.log('Autoplay blocked', e));
+    }
+    if (loader) {
+        loader.classList.add('hidden');
+        setTimeout(() => { loader.style.display = 'none'; }, 800);
+    }
+    document.body.style.overflow = ''; // Unlock scroll
+    
+    // Trigger Hero animations
+    if (typeof heroTl !== 'undefined') heroTl.restart();
+}
+
+criticalAssets.forEach(asset => {
+    if (asset.tagName === 'IMG') {
+        if (asset.complete) {
+            updateProgress();
+        } else {
+            asset.addEventListener('load', updateProgress, { once: true });
+            asset.addEventListener('error', updateProgress, { once: true });
+        }
+    } else if (asset.tagName === 'AUDIO' || asset.tagName === 'VIDEO') {
+        if (asset.readyState >= 1) { // HAVE_METADATA or more
+            updateProgress();
+        } else {
+            asset.addEventListener('loadedmetadata', updateProgress, { once: true });
+            asset.addEventListener('error', updateProgress, { once: true });
+        }
+    }
+});
+
+window.addEventListener('load', () => {
+    if (loadedCount < totalAssets) {
+        loadedCount = totalAssets - 1;
+        updateProgress();
+    }
+});
+
+
+// ==========================================
 // INITIALIZATION
 // ==========================================
 gsap.registerPlugin(ScrollTrigger);
@@ -41,7 +130,7 @@ if (celebrateBtn) {
 // ==========================================
 
 // Initial Hero Reveal
-const heroTl = gsap.timeline();
+const heroTl = gsap.timeline({ paused: true });
 heroTl.from('.hero-bg-text', { y: 100, opacity: 0, duration: 1.5, ease: 'power4.out' })
       .from('.hero-portrait', { scale: 0.8, opacity: 0, duration: 1.5, ease: 'power3.out' }, "-=1")
       .from('.floating-card', { y: 50, opacity: 0, stagger: 0.2, duration: 1, ease: 'power2.out' }, "-=1");
@@ -657,9 +746,7 @@ if ('ontouchstart' in window || window.innerWidth <= 768) {
 // ==========================================
 // BACKGROUND MUSIC LOGIC
 // ==========================================
-const bgMusic = document.getElementById('bg-music');
 const musicToggle = document.getElementById('music-toggle');
-let isMusicPlaying = false;
 
 if (bgMusic && musicToggle) {
     // Attempt to autoplay on first interaction
@@ -693,5 +780,25 @@ if (bgMusic && musicToggle) {
             musicToggle.textContent = '🔊';
             isMusicPlaying = true;
         }
+    });
+}
+
+// ==========================================
+// VIDEO LAZY PLAYING
+// ==========================================
+const lazyVideos = document.querySelectorAll('.lazy-video');
+if ('IntersectionObserver' in window && lazyVideos.length > 0) {
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.play().catch(e => console.log('Video autoplay blocked'));
+            } else {
+                entry.target.pause();
+            }
+        });
+    }, { threshold: 0.25 });
+
+    lazyVideos.forEach(video => {
+        videoObserver.observe(video);
     });
 }
