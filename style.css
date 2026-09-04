@@ -954,6 +954,10 @@ body.hovering .cursor-follower {
         max-width: 100vw !important;
     }
     
+    /* Aggressive Performance Optimization: Remove heavy box-shadows on mobile */
+    * {
+        box-shadow: none !important;
+    }
     /* Section Padding Adjustments */
     .hero-section, .world-section, .gallery-section, .video-section, .story-section, .final-gallery, .quote-section {
         padding: 5vh 5vw !important;

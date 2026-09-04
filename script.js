@@ -43,7 +43,7 @@ if (celebrateBtn) {
 // Initial Hero Reveal
 const heroTl = gsap.timeline();
 heroTl.from('.hero-bg-text', { y: 100, opacity: 0, duration: 1.5, ease: 'power4.out' })
-      .from('.hero-portrait', { scale: 0.8, opacity: 0, filter: 'blur(10px)', duration: 1.5, ease: 'power3.out' }, "-=1")
+      .from('.hero-portrait', { scale: 0.8, opacity: 0, duration: 1.5, ease: 'power3.out' }, "-=1")
       .from('.floating-card', { y: 50, opacity: 0, stagger: 0.2, duration: 1, ease: 'power2.out' }, "-=1");
 
 // Mouse Parallax for Hero Elements (slowed down)
@@ -74,80 +74,85 @@ heroSection.addEventListener('mousemove', throttle((e) => {
     gsap.to('.card-3', { x: x * 1.5, y: y * 1.5, duration: 4, ease: 'power2.out' });
 }, 50));
 
-// Scroll Parallax Images
-gsap.utils.toArray('.parallax-img').forEach(img => {
-    const speed = img.dataset.speed || 1;
-    gsap.to(img, {
-        y: () => (window.innerHeight * -0.2) * speed,
-        ease: 'none',
-        scrollTrigger: {
-            trigger: img,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true
-        }
+if (window.innerWidth > 768) {
+    // Scroll Parallax Images
+    gsap.utils.toArray('.parallax-img').forEach(img => {
+        const speed = img.dataset.speed || 1;
+        gsap.to(img, {
+            y: () => (window.innerHeight * -0.2) * speed,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: img,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
     });
-});
 
-// Reveal Sections (Fade + Slide)
-gsap.utils.toArray('.split-text').forEach(title => {
-    gsap.from(title, {
+    // Reveal Sections (Fade + Slide)
+    gsap.utils.toArray('.split-text').forEach(title => {
+        gsap.from(title, {
+            y: 100,
+            opacity: 0,
+            duration: 2.5,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: title,
+                start: 'top 85%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+    });
+
+    // Masonry Grid Reveal
+    gsap.from('.masonry-item', {
         y: 100,
         opacity: 0,
-        duration: 2.5,
+        stagger: 0.2,
+        duration: 2,
         ease: 'power3.out',
         scrollTrigger: {
-            trigger: title,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse'
+            trigger: '.masonry-grid',
+            start: 'top 80%',
         }
     });
-});
 
-// Masonry Grid Reveal
-gsap.from('.masonry-item', {
-    y: 100,
-    opacity: 0,
-    stagger: 0.2,
-    duration: 2,
-    ease: 'power3.out',
-    scrollTrigger: {
-        trigger: '.masonry-grid',
-        start: 'top 80%',
-    }
-});
-
-// Story Cards Flow
-gsap.utils.toArray('.card-parallax').forEach(card => {
-    const speed = card.dataset.speed || 1;
-    gsap.fromTo(card, 
-        { y: 150, opacity: 0, rotation: Math.random() * 10 - 5 },
-        { 
-            y: -50 * speed, opacity: 1, rotation: 0,
-            duration: 2.5,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: card,
-                start: 'top 85%',
-                end: 'bottom top',
-                scrub: 1
+    // Story Cards Flow
+    gsap.utils.toArray('.card-parallax').forEach(card => {
+        const speed = card.dataset.speed || 1;
+        gsap.fromTo(card, 
+            { y: 150, opacity: 0, rotation: Math.random() * 10 - 5 },
+            { 
+                y: -50 * speed, opacity: 1, rotation: 0,
+                duration: 2.5,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 85%',
+                    end: 'bottom top',
+                    scrub: 1
+                }
             }
-        }
-    );
-});
+        );
+    });
 
-// Final Gallery Reveal
-gsap.from('.grid-item', {
-    scale: 0.9,
-    opacity: 0,
-    stagger: 0.2,
-    duration: 2,
-    ease: 'power2.out',
-    scrollTrigger: {
-        trigger: '.final-gallery',
-        start: 'top 75%'
-    }
-});
+    // Final Gallery Reveal
+    gsap.from('.grid-item', {
+        scale: 0.9,
+        opacity: 0,
+        stagger: 0.2,
+        duration: 2,
+        ease: 'power2.out',
+        scrollTrigger: {
+            trigger: '.final-gallery',
+            start: 'top 75%'
+        }
+    });
+} else {
+    // For mobile, instantly show elements to avoid GSAP scroll lag
+    gsap.set('.split-text, .masonry-item, .card-parallax, .grid-item', { opacity: 1, y: 0, scale: 1, rotation: 0 });
+}
 
 // ==========================================
 // BUTTERFLIES ANIMATION SYSTEM
