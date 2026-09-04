@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bauni Ka Birthday</title>
     <meta name="description" content="A dreamy, elegant, and magical luxury birthday experience.">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+
     <!-- Loading Screen -->
     <div id="loading-screen">
         <div class="loader-content">
-            <p id="loading-text" style="font-size: 1.5rem; font-family: var(--font-primary); font-style: italic;">Preparing something special...</p>
-            <div class="progress-container" style="width: 250px; height: 4px; background: rgba(0,0,0,0.1); border-radius: 2px; margin: 1.5rem 0; overflow: hidden;">
-                <div class="progress-bar" id="progress-bar" style="width: 0%; height: 100%; background: var(--clr-gold); transition: width 0.3s ease;"></div>
+            <p id="loading-text" style="font-size: 1.5rem; font-family: var(--font-primary); font-style: italic;">
+                Preparing something special...</p>
+            <div class="progress-container"
+                style="width: 250px; height: 4px; background: rgba(0,0,0,0.1); border-radius: 2px; margin: 1.5rem 0; overflow: hidden;">
+                <div class="progress-bar" id="progress-bar"
+                    style="width: 0%; height: 100%; background: var(--clr-gold); transition: width 0.3s ease;"></div>
             </div>
             <div class="progress-text" id="progress-text" style="font-size: 1.1rem; letter-spacing: 2px;">0%</div>
-            <div id="start-prompt" style="display: none; position: fixed; inset: 0; align-items: center; justify-content: center; z-index: 100; cursor: pointer;">
-                <p style="font-size: 1.8rem; font-family: var(--font-primary); color: var(--clr-charcoal); background: rgba(255,255,255,0.8); padding: 1rem 2rem; border-radius: 30px; backdrop-filter: blur(5px);">✨<br>Tap<br>anywhere<br>to<br>begin<br>✨</p>
+            <div id="start-prompt"
+                style="display: none; position: fixed; inset: 0; align-items: center; justify-content: center; z-index: 100; cursor: pointer;">
+                <p
+                    style="font-size: 1.8rem; font-family: var(--font-primary); color: var(--clr-charcoal); background: rgba(255,255,255,0.8); padding: 1rem 2rem; border-radius: 30px; backdrop-filter: blur(5px);">
+                    ✨<br>Tap<br>anywhere<br>to<br>begin<br>✨</p>
             </div>
         </div>
     </div>
@@ -33,7 +43,7 @@
     <div class="bokeh bokeh-1"></div>
     <div class="bokeh bokeh-2"></div>
     <div class="bokeh bokeh-3"></div>
-    
+
     <!-- Particles & Backgrounds -->
     <div class="floral-bokeh"></div>
     <div id="butterflies-container"></div>
@@ -41,29 +51,31 @@
 
     <main>
         <div>
-            
+
             <!-- Hero Section -->
             <section id="hero" class="hero-section grad-s1 light-section" data-nav-title="Home">
                 <div class="hero-bg-text">HAPPY BIRTHDAY</div>
-                
+
                 <!-- Floating Circular Images for Hero -->
                 <div class="floating-bubbles">
-                    <img src="assets/images/Snapchat-80808535.jpg" class="bubble b1" alt="bubble">
-                    <img src="assets/images/IMG_20251001_161321_049.jpg" class="bubble b2" alt="bubble">
-                    <img src="assets/images/Screenshot_20260903_125151_Instagram.jpg" class="bubble b3" alt="bubble">
-                    <img src="assets/images/Screenshot_20251024_012641_Instagram.jpg" class="bubble b4" alt="bubble">
+                    <img src="assets/images/Snapchat-80808535.jpg" class="bubble b1" alt="bubble" width="80" height="80" loading="eager" fetchpriority="high">
+                    <img src="assets/images/IMG_20251001_161321_049.jpg" class="bubble b2" alt="bubble" width="120" height="120" loading="eager" fetchpriority="high">
+                    <img src="assets/images/Screenshot_20260903_125151_Instagram.jpg" class="bubble b3" alt="bubble" width="90" height="90" loading="eager" fetchpriority="high">
+                    <img src="assets/images/Screenshot_20251024_012641_Instagram.jpg" class="bubble b4" alt="bubble" width="140" height="140" loading="eager" fetchpriority="high">
                 </div>
 
                 <div class="hero-content">
                     <div class="botanical-decor decor-hero-left">🌻🌿</div>
                     <div class="botanical-decor decor-hero-right">🌸</div>
-                    
-                    <img src="assets/images/Screenshot_20260903_122335_Instagram.jpg" class="hero-portrait placeholder-img image-reveal" alt="Portrait">
+
+                    <img src="assets/images/Screenshot_20260903_122335_Instagram.jpg"
+                        class="hero-portrait placeholder-img image-reveal" alt="Portrait" width="400" height="600" loading="eager" fetchpriority="high">
                     <div class="floating-card card-1 glassmorphism">
                         <p style="text-align: center" class="quote">"Happy 21st Birthday<br>Snehomoni !!!"</p>
                     </div>
                     <div class="floating-card card-2 glassmorphism">
-                        <p class="desc">Ekta simple 'Happy Birthday' text-o pathate partam ... Kintu eto free time peye kichu toh kortei hoto . 🎂😂</p>
+                        <p class="desc">Ekta simple 'Happy Birthday' text-o pathate partam ... Kintu eto free time peye
+                            kichu toh kortei hoto . 🎂😂</p>
                     </div>
                     <div class="floating-card card-3 glassmorphism">
                         <div class="gift-illustration">🎁</div>
@@ -75,19 +87,27 @@
 
 
             <!-- Beautiful Moments Gallery -->
-            <section id="gallery" class="gallery-section grad-s3 light-section" style="position: relative;" data-nav-title="Beautiful Moments">
+            <section id="gallery" class="gallery-section grad-s3 light-section" style="position: relative;"
+                data-nav-title="Beautiful Moments">
                 <div class="botanical-decor decor-gallery-corner">🌻</div>
                 <div style="text-align: center; margin-bottom: 4rem;">
                     <h2 class="section-title split-text">Welcome Madam! 😌✨</h2>
-                    <p class="desc split-text" style="font-size: 1.2rem;">Ajker puro website-ta tomar cringe korar jonno specially banano hoyeche. 😂</p>
+                    <p class="desc split-text" style="font-size: 1.2rem;">Ajker puro website-ta tomar cringe korar jonno
+                        specially banano hoyeche. 😂</p>
                 </div>
                 <div class="masonry-grid">
-                    <img src="assets/images/Screenshot_20260903_121738_Instagram.jpg" class="masonry-item placeholder-img tilt-card" loading="lazy" alt="Gallery">
-                    <img src="assets/images/Screenshot_20260903_155412_Instagram.jpg" class="masonry-item placeholder-img tilt-card" loading="lazy" alt="Gallery">
-                    <img src="assets/images/Screenshot_20260903_122508_Instagram.jpg" class="masonry-item placeholder-img tilt-card" loading="lazy" alt="Gallery">
-                    <img src="assets/images/Screenshot_20260903_122301_Instagram.jpg" class="masonry-item placeholder-img tilt-card" loading="lazy" alt="Gallery">
-                    <img src="assets/images/Screenshot_20260903_155325_Instagram.jpg" class="masonry-item placeholder-img tilt-card" loading="lazy" alt="Gallery">
-                    <img src="assets/images/Screenshot_20260903_122639_Instagram.jpg" class="masonry-item placeholder-img tilt-card" loading="lazy" alt="Gallery">
+                    <img src="assets/images/Screenshot_20260903_121738_Instagram.jpg"
+                        class="masonry-item placeholder-img tilt-card" loading="eager" fetchpriority="high" width="400" height="500" alt="Gallery">
+                    <img src="assets/images/Screenshot_20260903_155412_Instagram.jpg"
+                        class="masonry-item placeholder-img tilt-card" loading="eager" fetchpriority="high" width="400" height="500" alt="Gallery">
+                    <img src="assets/images/Screenshot_20260903_122508_Instagram.jpg"
+                        class="masonry-item placeholder-img tilt-card" loading="eager" fetchpriority="high" width="400" height="500" alt="Gallery">
+                    <img src="assets/images/Screenshot_20260903_122301_Instagram.jpg"
+                        class="masonry-item placeholder-img tilt-card" loading="eager" fetchpriority="high" width="400" height="500" alt="Gallery">
+                    <img src="assets/images/Screenshot_20260903_155325_Instagram.jpg"
+                        class="masonry-item placeholder-img tilt-card" loading="eager" fetchpriority="high" width="400" height="500" alt="Gallery">
+                    <img src="assets/images/Screenshot_20260903_122639_Instagram.jpg"
+                        class="masonry-item placeholder-img tilt-card" loading="eager" fetchpriority="high" width="400" height="500" alt="Gallery">
                 </div>
             </section>
 
@@ -101,8 +121,10 @@
                         <div class="botanical-decor decor-letter-top">🌸</div>
                         <div class="letter-content">
                             <p>To Bauni,</p>
-                            <p>Finally 21 ! Ha 21 bochor er moton bebohar naholeo thikache , Congratulations ... ekhon officially boro theke aro boro hoye geli . Ar ha , paglami ta komas na ...</p>
-                            <p>Life e onek success ashuk , onek taka ashuk (amake treat deowar jonno) ar joto dreams ache shob fulfill hok . Asha kori poreo toke irritate and annoy korte pari ...</p>
+                            <p>Finally 21 ! Ha 21 bochor er moton bebohar naholeo thikache , Congratulations ... ekhon
+                                officially boro theke aro boro hoye geli . Ar ha , paglami ta komas na ...</p>
+                            <p>Life e onek success ashuk , onek taka ashuk (amake treat deowar jonno) ar joto dreams
+                                ache shob fulfill hok . Asha kori poreo toke irritate and annoy korte pari ...</p>
                             <p>Ar haa , Enjoy your day to the fullest!</p>
                         </div>
                         <div class="letter-signature">
@@ -113,7 +135,7 @@
                     </div>
                 </div>
             </section>
-            
+
             <!-- Curved Separator -->
             <div class="curve-separator bottom-curve"></div>
 
@@ -121,7 +143,9 @@
             <section id="video" class="video-section grad-s4 dark-section" data-nav-title="Video Memories">
                 <div class="split-layout">
                     <div class="split-video glowing-video-border">
-                        <video src="assets/clips/Video Project.mp4" loop muted playsinline preload="metadata" class="placeholder-video lazy-video" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"></video>
+                        <video src="assets/clips/Video Project.mp4" loop muted playsinline preload="metadata"
+                            class="placeholder-video lazy-video"
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"></video>
                         <div class="play-btn magnetic">▶</div>
                     </div>
                     <div class="split-content">
@@ -130,11 +154,13 @@
                         <button class="cta-btn magnetic">Starring: Birthday Girl. 😂🎂</button>
                     </div>
                 </div>
-                
+
                 <div class="split-layout reverse mt-large" style="position: relative;">
                     <div class="botanical-decor decor-video-edge">🌸🌿</div>
                     <div class="split-video glowing-video-border">
-                        <video src="assets/clips/Video Project 1.mp4" loop muted playsinline preload="metadata" class="placeholder-video lazy-video" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"></video>
+                        <video src="assets/clips/Video Project 1.mp4" loop muted playsinline preload="metadata"
+                            class="placeholder-video lazy-video"
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"></video>
                         <div class="play-btn magnetic">▶</div>
                     </div>
                     <div class="split-content">
@@ -152,15 +178,22 @@
             <section id="final-gallery" class="final-gallery grad-s5 light-section" data-nav-title="Cherished Memories">
                 <div style="text-align: center; margin-bottom: 4rem;">
                     <h2 class="section-title split-text">Aro Pics</h2>
-                    <p class="desc split-text" style="font-size: 1.2rem;">Chobir Stock ar phorabe na etoh chobi ... Chobir por Chobi !</p>
+                    <p class="desc split-text" style="font-size: 1.2rem;">Chobir Stock ar phorabe na etoh chobi ...
+                        Chobir por Chobi !</p>
                 </div>
                 <div class="final-grid">
-                    <img src="assets/images/Screenshot_20260903_122418_Instagram.jpg" class="grid-item placeholder-img reveal-item" loading="lazy" alt="Memory">
-                    <img src="assets/images/Screenshot_20260903_122357_Instagram.jpg" class="grid-item placeholder-img reveal-item" loading="lazy" alt="Memory">
-                    <img src="assets/images/Screenshot_20260903_122312_Instagram.jpg" class="grid-item placeholder-img reveal-item" loading="lazy" alt="Memory">
-                    <img src="assets/images/Screenshot_20260903_122216_Instagram.jpg" class="grid-item placeholder-img reveal-item" loading="lazy" alt="Memory">
-                    <img src="assets/images/Screenshot_20260903_121819_Instagram.jpg" class="grid-item placeholder-img reveal-item" loading="lazy" alt="Memory">
-                    <img src="assets/images/Screenshot_20260903_122629_Instagram.jpg" class="grid-item placeholder-img reveal-item" loading="lazy" alt="Memory">
+                    <img src="assets/images/Screenshot_20260903_122418_Instagram.jpg"
+                        class="grid-item placeholder-img reveal-item" loading="lazy" width="400" height="350" alt="Memory">
+                    <img src="assets/images/Screenshot_20260903_122357_Instagram.jpg"
+                        class="grid-item placeholder-img reveal-item" loading="lazy" width="400" height="350" alt="Memory">
+                    <img src="assets/images/Screenshot_20260903_122312_Instagram.jpg"
+                        class="grid-item placeholder-img reveal-item" loading="lazy" width="400" height="350" alt="Memory">
+                    <img src="assets/images/Screenshot_20260903_122216_Instagram.jpg"
+                        class="grid-item placeholder-img reveal-item" loading="lazy" width="400" height="350" alt="Memory">
+                    <img src="assets/images/Screenshot_20260903_121819_Instagram.jpg"
+                        class="grid-item placeholder-img reveal-item" loading="lazy" width="400" height="350" alt="Memory">
+                    <img src="assets/images/Screenshot_20260903_122629_Instagram.jpg"
+                        class="grid-item placeholder-img reveal-item" loading="lazy" width="400" height="350" alt="Memory">
                 </div>
             </section>
 
@@ -171,32 +204,41 @@
             <section id="story" class="story-section grad-s6 dark-section" data-nav-title="Through the Years">
                 <div style="text-align: center; margin-bottom: 4rem; padding-top: 4rem;">
                     <h2 class="section-title split-text">Through the Years</h2>
-                    <p class="desc split-text" style="font-size: 1.2rem;">Kichu group pics , jate mone rakhis amader ...</p>
+                    <p class="desc split-text" style="font-size: 1.2rem;">Kichu group pics , jate mone rakhis amader ...
+                    </p>
                 </div>
                 <div class="story-container">
-                    <img src="assets/images/IMG-20210824-WA0132-1.jpg" class="story-card placeholder-img card-parallax" loading="lazy" alt="Story">
-                    <img src="assets/images/IMG-20221005-WA0024.jpg" class="story-card placeholder-img card-parallax" data-speed="0.9" loading="lazy" alt="Story">
-                    <img src="assets/images/IMG-20250930-WA0046.jpg" class="story-card placeholder-img card-parallax" data-speed="1.1" loading="lazy" alt="Story">
-                    <img src="assets/images/IMG-20260206-WA0005.jpg" class="story-card placeholder-img card-parallax" data-speed="0.85" loading="lazy" alt="Story">
+                    <img src="assets/images/IMG-20210824-WA0132-1.jpg" class="story-card placeholder-img card-parallax"
+                        loading="lazy" width="800" height="600" alt="Story">
+                    <img src="assets/images/IMG-20221005-WA0024.jpg" class="story-card placeholder-img card-parallax"
+                        data-speed="0.9" loading="lazy" width="800" height="600" alt="Story">
+                    <img src="assets/images/IMG-20250930-WA0046.jpg" class="story-card placeholder-img card-parallax"
+                        data-speed="1.1" loading="lazy" width="800" height="600" alt="Story">
+                    <img src="assets/images/IMG-20260206-WA0005.jpg" class="story-card placeholder-img card-parallax"
+                        data-speed="0.85" loading="lazy" width="800" height="600" alt="Story">
                 </div>
             </section>
-            
+
             <!-- Peach Gradient Quote -->
-            <section id="wishes" class="quote-section grad-s7 light-section" style="position: relative;" data-nav-title="Dreams & wishes">
-                
+            <section id="wishes" class="quote-section grad-s7 light-section" style="position: relative;"
+                data-nav-title="Dreams & wishes">
+
                 <!-- Floating Circular Images for Wishes -->
                 <div class="floating-bubbles">
-                    <img src="assets/images/Screenshot_20251024_012641_Instagram.jpg" class="bubble b1" alt="bubble">
-                    <img src="assets/images/Screenshot_20260903_125151_Instagram.jpg" class="bubble b2" alt="bubble">
-                    <img src="assets/images/IMG_20251001_161321_049.jpg" class="bubble b3" alt="bubble">
-                    <img src="assets/images/Snapchat-80808535.jpg" class="bubble b4" alt="bubble">
+                    <img src="assets/images/Screenshot_20251024_012641_Instagram.jpg" class="bubble b1" alt="bubble" width="80" height="80" loading="lazy">
+                    <img src="assets/images/Screenshot_20260903_125151_Instagram.jpg" class="bubble b2" alt="bubble" width="120" height="120" loading="lazy">
+                    <img src="assets/images/IMG_20251001_161321_049.jpg" class="bubble b3" alt="bubble" width="90" height="90" loading="lazy">
+                    <img src="assets/images/Snapchat-80808535.jpg" class="bubble b4" alt="bubble" width="140" height="140" loading="lazy">
                 </div>
 
                 <div class="botanical-decor decor-wishes-left">🌿</div>
                 <div class="botanical-decor decor-wishes-right">✨</div>
                 <div style="text-align: center;">
-                    <h2 class="section-title split-text" style="font-size: 3.5rem; margin-bottom: 1rem;">Happy Birthday , once again !</h2>
-                    <p class="desc split-text" style="font-size: 2rem; font-style: italic; max-width: 800px; margin: 0 auto; line-height: 1.4;">Ar toh kotha , dekha kichui hoyena ,<br>boro hoye gelam sobai ...</p>
+                    <h2 class="section-title split-text" style="font-size: 3.5rem; margin-bottom: 1rem;">Happy Birthday
+                        , once again !</h2>
+                    <p class="desc split-text"
+                        style="font-size: 2rem; font-style: italic; max-width: 800px; margin: 0 auto; line-height: 1.4;">
+                        Ar toh kotha , dekha kichui hoyena ,<br>boro hoye gelam sobai ...</p>
                 </div>
             </section>
 
@@ -205,8 +247,8 @@
                 <div class="footer-content">
                     <div class="footer-logo">🌻 SNEHA SAHA 🌻</div>
                     <ul class="footer-social">
-                        <li><a  class="magnetic">Elegant</a></li>
-                        <li><a  class="magnetic">Cute</a></li>
+                        <li><a class="magnetic">Elegant</a></li>
+                        <li><a class="magnetic">Cute</a></li>
                         <li><a class="magnetic">Beautiful</a></li>
                     </ul>
                     <p class="copyright">&copy; Created by Mayukh Samanta</p>
@@ -215,6 +257,8 @@
 
         </div>
     </main>
+
+    
 
     <!-- Audio Setup -->
     <audio id="bg-music" loop>
@@ -229,7 +273,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
     <!-- Lenis Smooth Scroll -->
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
-    
+
     <script src="script.js"></script>
 </body>
+
 </html>

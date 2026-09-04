@@ -23,7 +23,7 @@ function updateProgress() {
     const percent = Math.floor((loadedCount / totalAssets) * 100);
     if (progressBar) progressBar.style.width = percent + '%';
     if (progressText) progressText.innerText = percent + '%';
-    
+
     if (loadedCount >= totalAssets) {
         setTimeout(showStartPrompt, 500);
     }
@@ -33,7 +33,7 @@ function showStartPrompt() {
     if (document.querySelector('.progress-container')) document.querySelector('.progress-container').style.display = 'none';
     if (progressText) progressText.style.display = 'none';
     if (document.getElementById('loading-text')) document.getElementById('loading-text').style.display = 'none';
-    
+
     if (startPrompt) {
         startPrompt.style.display = 'flex';
         startPrompt.addEventListener('click', startExperience, { once: true });
@@ -56,7 +56,7 @@ function startExperience() {
         setTimeout(() => { loader.style.display = 'none'; }, 800);
     }
     document.body.style.overflow = ''; // Unlock scroll
-    
+
     // Trigger Hero animations
     if (typeof heroTl !== 'undefined') heroTl.restart();
 }
@@ -119,7 +119,7 @@ magneticElements.forEach(el => {
 const celebrateBtn = document.getElementById('celebrate-btn');
 if (celebrateBtn) {
     celebrateBtn.addEventListener('click', () => {
-        if(typeof burstConfetti === 'function') burstConfetti();
+        if (typeof burstConfetti === 'function') burstConfetti();
         // ScrollTo removed with lenis
         document.querySelector('#wishes').scrollIntoView({ behavior: 'smooth' });
     });
@@ -132,8 +132,8 @@ if (celebrateBtn) {
 // Initial Hero Reveal
 const heroTl = gsap.timeline({ paused: true });
 heroTl.from('.hero-bg-text', { y: 100, opacity: 0, duration: 1.5, ease: 'power4.out' })
-      .from('.hero-portrait', { scale: 0.8, opacity: 0, duration: 1.5, ease: 'power3.out' }, "-=1")
-      .from('.floating-card', { y: 50, opacity: 0, stagger: 0.2, duration: 1, ease: 'power2.out' }, "-=1");
+    .from('.hero-portrait', { scale: 0.8, opacity: 0, duration: 1.5, ease: 'power3.out' }, "-=1")
+    .from('.floating-card', { y: 50, opacity: 0, stagger: 0.2, duration: 1, ease: 'power2.out' }, "-=1");
 
 // Mouse Parallax for Hero Elements (slowed down)
 const heroSection = document.getElementById('hero');
@@ -141,7 +141,7 @@ const heroSection = document.getElementById('hero');
 // Utility: Throttle function to limit event firing rate
 function throttle(func, limit) {
     let inThrottle;
-    return function() {
+    return function () {
         const args = arguments;
         const context = this;
         if (!inThrottle) {
@@ -155,7 +155,7 @@ function throttle(func, limit) {
 heroSection.addEventListener('mousemove', throttle((e) => {
     const x = (e.clientX / window.innerWidth - 0.5) * 20;
     const y = (e.clientY / window.innerHeight - 0.5) * 20;
-    
+
     gsap.to('.hero-bg-text', { x: x * 2, y: y * 2, duration: 4, ease: 'power2.out' });
     gsap.to('.hero-portrait', { x: x * -1, y: y * -1, duration: 4, ease: 'power2.out' });
     gsap.to('.card-1', { x: x * 3, y: y * 3, duration: 4, ease: 'power2.out' });
@@ -210,9 +210,9 @@ if (window.innerWidth > 768) {
     // Story Cards Flow
     gsap.utils.toArray('.card-parallax').forEach(card => {
         const speed = card.dataset.speed || 1;
-        gsap.fromTo(card, 
+        gsap.fromTo(card,
             { y: 150, opacity: 0, rotation: Math.random() * 10 - 5 },
-            { 
+            {
                 y: -50 * speed, opacity: 1, rotation: 0,
                 duration: 2.5,
                 ease: 'power2.out',
@@ -252,7 +252,7 @@ const numButterflies = window.innerWidth < 768 ? 2 : 4; // Drastically reduced f
 function createButterfly() {
     const butterfly = document.createElement('div');
     butterfly.className = 'butterfly';
-    
+
     // Dynamic color based on OS Theme
     const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     let color;
@@ -264,23 +264,23 @@ function createButterfly() {
         color = colors[Math.floor(Math.random() * colors.length)];
     }
     butterfly.style.setProperty('--b-color', color);
-    
+
     // Random size modifier
     const sizeScale = Math.random() * 0.6 + 0.4;
     butterfly.style.transform = `scale(${sizeScale})`;
     // Store size to use in animation later
     butterfly.dataset.scale = sizeScale;
-    
+
     const leftWing = document.createElement('div');
     leftWing.className = 'wing left-wing';
-    
+
     const rightWing = document.createElement('div');
     rightWing.className = 'wing right-wing';
-    
+
     butterfly.appendChild(leftWing);
     butterfly.appendChild(rightWing);
     butterflyContainer.appendChild(butterfly);
-    
+
     return butterfly;
 }
 
@@ -293,10 +293,10 @@ function animateButterfly(butterfly) {
     function flyToNextPoint() {
         const nextX = -100 + Math.random() * (window.innerWidth + 200);
         const nextY = -100 + Math.random() * (window.innerHeight + 200);
-        
+
         const dx = nextX - currentX;
         const dy = nextY - currentY;
-        const distance = Math.sqrt(dx*dx + dy*dy);
+        const distance = Math.sqrt(dx * dx + dy * dy);
         const rotation = Math.atan2(dy, dx) * (180 / Math.PI);
         const duration = distance / (15 + Math.random() * 15);
 
@@ -318,7 +318,7 @@ for (let i = 0; i < numButterflies; i++) {
     setTimeout(() => {
         const b = createButterfly();
         animateButterfly(b);
-    }, i * 200); 
+    }, i * 200);
 }
 
 // ==========================================
@@ -336,11 +336,11 @@ function createSparkles(count) {
         const sparkle = document.createElement('div');
         sparkle.className = 'sparkle';
         sparklesContainer.appendChild(sparkle);
-        
+
         const startX = Math.random() * window.innerWidth;
         const startY = Math.random() * window.innerHeight;
         gsap.set(sparkle, { x: startX, y: startY, scale: Math.random() * 0.8 + 0.2 });
-        
+
         gsap.to(sparkle, {
             y: "-=" + (30 + Math.random() * 70),
             x: "+=" + (Math.random() * 40 - 20),
@@ -363,7 +363,7 @@ function createPetals(count) {
         const petal = document.createElement('div');
         petal.className = 'petal';
         sparklesContainer.appendChild(petal);
-        
+
         animatePetal(petal);
     }
 }
@@ -373,13 +373,13 @@ function animatePetal(petal) {
     const startX = Math.random() * window.innerWidth;
     const startY = -50 - Math.random() * 200;
     const scale = Math.random() * 0.6 + 0.4;
-    
+
     gsap.set(petal, { x: startX, y: startY, scale: scale, rotationZ: Math.random() * 360, rotationX: Math.random() * 360, opacity: 0.6 + Math.random() * 0.3 });
-    
+
     const endX = startX + (Math.random() * 300 - 150); // drift left/right
     const endY = window.innerHeight + 100;
     const duration = 25 + Math.random() * 25; // extremely slow falling
-    
+
     gsap.to(petal, {
         y: endY,
         x: endX,
@@ -413,9 +413,9 @@ gsap.utils.toArray('.glassmorphism, .masonry-item, .grid-item, .hero-portrait').
     // Set a scattered base rotation for the scrapbook look
     const baseRotation = (Math.random() * 8 - 4);
     gsap.set(card, { rotationZ: baseRotation });
-    
+
     gsap.to(card, {
-        yPercent: "-=" + (2 + Math.random() * 4), 
+        yPercent: "-=" + (2 + Math.random() * 4),
         rotationZ: baseRotation + (Math.random() * 2 - 1), // wiggle slightly around the scatter angle
         duration: 6 + Math.random() * 4,
         ease: "sine.inOut",
@@ -433,11 +433,11 @@ function createStars(count) {
         const star = document.createElement('div');
         star.className = 'star';
         sparklesContainer.appendChild(star);
-        
+
         const startX = Math.random() * window.innerWidth;
         const startY = Math.random() * window.innerHeight;
         gsap.set(star, { x: startX, y: startY, scale: Math.random() * 0.5 + 0.5 });
-        
+
         gsap.to(star, {
             rotationZ: "+=180",
             opacity: Math.random() * 0.4 + 0.2,
@@ -456,7 +456,7 @@ function createHearts(count) {
         const heart = document.createElement('div');
         heart.className = 'heart';
         sparklesContainer.appendChild(heart);
-        
+
         animateHeart(heart);
     }
 }
@@ -465,9 +465,9 @@ function animateHeart(heart) {
     const startX = Math.random() * window.innerWidth;
     const startY = window.innerHeight + 100;
     const scale = Math.random() * 0.5 + 0.5;
-    
+
     gsap.set(heart, { x: startX, y: startY, scale: scale, opacity: 0.2 + Math.random() * 0.3 });
-    
+
     gsap.to(heart, {
         y: -100,
         x: startX + (Math.random() * 200 - 100),
@@ -481,16 +481,16 @@ function createBalloons(count) {
     for (let i = 0; i < count; i++) {
         const balloon = document.createElement('div');
         balloon.className = 'balloon';
-        
+
         const bColors = ['rgba(248, 200, 220, 0.4)', 'rgba(216, 196, 244, 0.4)', 'rgba(255, 229, 212, 0.4)'];
         balloon.style.background = `radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), ${bColors[Math.floor(Math.random() * bColors.length)]})`;
-        
+
         const size = 80 + Math.random() * 100;
         balloon.style.width = `${size}px`;
         balloon.style.height = `${size * 1.2}px`;
-        
+
         document.body.appendChild(balloon);
-        
+
         animateBalloon(balloon);
     }
 }
@@ -498,9 +498,9 @@ function createBalloons(count) {
 function animateBalloon(balloon) {
     const startX = Math.random() * window.innerWidth;
     const startY = window.innerHeight + 200;
-    
+
     gsap.set(balloon, { x: startX, y: startY, rotationZ: (Math.random() * 20 - 10) });
-    
+
     gsap.to(balloon, {
         y: -300,
         x: startX + (Math.random() * 100 - 50),
@@ -517,14 +517,14 @@ function burstConfetti() {
         const conf = document.createElement('div');
         conf.className = 'confetti';
         document.body.appendChild(conf);
-        
+
         const startX = window.innerWidth / 2 + (Math.random() * 200 - 100);
         const startY = -50;
-        
+
         gsap.set(conf, { x: startX, y: startY, rotationZ: Math.random() * 360, rotationX: Math.random() * 360 });
-        
+
         gsap.to(conf, {
-            x: startX + (Math.random() * window.innerWidth - window.innerWidth/2),
+            x: startX + (Math.random() * window.innerWidth - window.innerWidth / 2),
             y: window.innerHeight + 100,
             rotationZ: "+=" + (Math.random() * 720 - 360),
             rotationX: "+=" + (Math.random() * 720 - 360),
@@ -563,16 +563,16 @@ function createPollen(count) {
 function animatePollen(pollen) {
     const startX = Math.random() * window.innerWidth;
     const startY = Math.random() * window.innerHeight;
-    
+
     gsap.set(pollen, { x: startX, y: startY, opacity: 0 });
-    
+
     gsap.to(pollen, {
         opacity: Math.random() * 0.7 + 0.2,
         duration: 2 + Math.random() * 2,
         yoyo: true,
         repeat: 1
     });
-    
+
     gsap.to(pollen, {
         x: startX + (Math.random() * 80 - 40),
         y: startY - (Math.random() * 100 + 50),
@@ -595,9 +595,9 @@ function createPetals(count) {
 function animatePetal(petal) {
     const startX = Math.random() * window.innerWidth;
     const startY = -50; // starts just above viewport
-    
+
     gsap.set(petal, { x: startX, y: startY, rotationZ: Math.random() * 360 });
-    
+
     gsap.to(petal, {
         y: window.innerHeight + 100,
         x: startX + (Math.random() * 300 - 150),
@@ -645,7 +645,7 @@ if (smoothWrapper) applyTheme(darkModeQuery.matches);
 darkModeQuery.addEventListener('change', (e) => {
     const isDark = e.matches;
     if (smoothWrapper) applyTheme(isDark);
-    
+
     // Update all existing butterflies in real-time
     document.querySelectorAll('.butterfly').forEach(b => {
         if (isDark) {
@@ -687,18 +687,18 @@ if ('ontouchstart' in window || window.innerWidth <= 768) {
         for (let i = 0; i < count; i++) {
             const particle = document.createElement('div');
             particle.className = 'touch-particle';
-            
+
             // Random scatter distance
             const tx = (Math.random() - 0.5) * 100;
             const ty = -Math.random() * 80 - 20; // Always float upwards
-            
+
             particle.style.left = `${x}px`;
             particle.style.top = `${y}px`;
             particle.style.setProperty('--tx', `${tx}px`);
             particle.style.setProperty('--ty', `${ty}px`);
-            
+
             document.body.appendChild(particle);
-            
+
             // Cleanup after animation completes
             setTimeout(() => {
                 particle.remove();
@@ -710,23 +710,23 @@ if ('ontouchstart' in window || window.innerWidth <= 768) {
         isTouching = true;
         currentX = e.touches[0].clientX;
         currentY = e.touches[0].clientY;
-        
+
         touchHeart.style.left = `${currentX}px`;
         touchHeart.style.top = `${currentY}px`;
-        
+
         touchHeart.classList.add('active');
         touchHeart.classList.add('bounce');
-        
+
         setTimeout(() => touchHeart.classList.remove('bounce'), 200);
-        
+
         // Tap explosion
         spawnParticles(currentX, currentY, 6);
-        
+
         // Start long press emitter
         longPressInterval = setInterval(() => {
             spawnParticles(currentX, currentY, 1);
         }, 150);
-        
+
         updateTouchPosition();
     }, { passive: true });
 
@@ -802,3 +802,5 @@ if ('IntersectionObserver' in window && lazyVideos.length > 0) {
         videoObserver.observe(video);
     });
 }
+
+
