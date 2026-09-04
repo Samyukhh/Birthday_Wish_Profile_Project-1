@@ -3,26 +3,7 @@
 // ==========================================
 gsap.registerPlugin(ScrollTrigger);
 
-// Initialize Lenis for Smooth Scrolling
-const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    direction: 'vertical',
-    gestureDirection: 'vertical',
-    smooth: true,
-    mouseMultiplier: 1,
-    smoothTouch: false,
-    touchMultiplier: 2,
-    infinite: false,
-});
-
-// Integrate Lenis with GSAP ScrollTrigger
-lenis.on('scroll', ScrollTrigger.update);
-
-gsap.ticker.add((time)=>{
-    lenis.raf(time * 1000);
-});
-gsap.ticker.lagSmoothing(0);
+// Lenis scroll hijacking removed for performance
 
 // ==========================================
 // CUSTOM CURSOR & MAGNETIC ELEMENTS
@@ -50,7 +31,8 @@ const celebrateBtn = document.getElementById('celebrate-btn');
 if (celebrateBtn) {
     celebrateBtn.addEventListener('click', () => {
         if(typeof burstConfetti === 'function') burstConfetti();
-        lenis.scrollTo('#wishes', { duration: 2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+        // ScrollTo removed with lenis
+        document.querySelector('#wishes').scrollIntoView({ behavior: 'smooth' });
     });
 }
 
@@ -171,7 +153,7 @@ gsap.from('.grid-item', {
 // BUTTERFLIES ANIMATION SYSTEM
 // ==========================================
 const butterflyContainer = document.getElementById('butterflies-container');
-const numButterflies = window.innerWidth < 768 ? 8 : 15;
+const numButterflies = window.innerWidth < 768 ? 2 : 4; // Drastically reduced for performance
 
 function createButterfly() {
     const butterfly = document.createElement('div');
@@ -277,6 +259,9 @@ function createSparkles(count) {
         });
     }
 }
+
+// Generate Sparkles periodically (reduced frequency)
+setInterval(() => createSparkles(1), 2000);
 
 function createPetals(count) {
     if (!sparklesContainer) return;
